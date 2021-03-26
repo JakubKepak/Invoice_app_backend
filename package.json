@@ -1,0 +1,29 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./build/index.js",
+    "dev": "nodemon --exec ./node_modules/.bin/babel-node src/index.js",
+    "clean": "rm -rf build && mkdir build",
+    "build-server": "babel -d ./build ./src -s",
+    "build": "npm run clean && npm run build-server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^2.22.1",
+    "dotenv": "^8.2.0",
+    "graphql": "^15.5.0",
+    "mongoose": "^5.12.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.13.10",
+    "@babel/core": "^7.13.10",
+    "@babel/node": "^7.13.12",
+    "@babel/preset-env": "^7.13.12"
+  }
+}
