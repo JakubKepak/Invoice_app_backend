@@ -5,6 +5,9 @@ import mongoose from "mongoose";
 import typeDefs from "./models/typeDefs";
 import resolvers from "./models/resolvers";
 
+// Schemas
+import Invoice from "./models/Invoice";
+
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
@@ -12,6 +15,9 @@ if (process.env.NODE_ENV !== "production") {
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  context() {
+    return { Invoice };
+  },
   introspection: true,
   playground: true,
 });

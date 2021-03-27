@@ -1,12 +1,8 @@
-import { gql } from "apollo-server";
-
-import Invoice from "./Invoice";
-
 const resolvers = {
   Query: {
-    async getInvoices() {
+    async getInvoices(_, __, ctx) {
       try {
-        const invoices = await Invoice.find();
+        const invoices = await ctx.Invoice.find();
         return invoices;
       } catch (err) {
         throw new Error(err);
