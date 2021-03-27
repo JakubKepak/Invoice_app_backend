@@ -11,6 +11,7 @@ if (process.env.NODE_ENV !== "production") {
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  playground: true,
 });
 
 mongoose
