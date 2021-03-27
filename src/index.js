@@ -19,7 +19,7 @@ const server = new ApolloServer({
     return { Invoice };
   },
   introspection: true,
-  playground: true,
+  // playground: true,
 });
 
 mongoose
