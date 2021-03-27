@@ -16,7 +16,8 @@
     "apollo-server": "^2.22.1",
     "dotenv": "^8.2.0",
     "graphql": "^15.5.0",
-    "mongoose": "^5.12.2"
+    "mongoose": "^5.12.2",
+    "regenerator-runtime": "^0.13.7"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.10",

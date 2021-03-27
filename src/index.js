@@ -1,3 +1,4 @@
+import "regenerator-runtime/runtime.js";
 import { ApolloServer } from "apollo-server";
 import mongoose from "mongoose";
 

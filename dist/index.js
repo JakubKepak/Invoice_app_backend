@@ -1,5 +1,7 @@
 "use strict";
 
+require("regenerator-runtime/runtime.js");
+
 var _apolloServer = require("apollo-server");
 
 var _mongoose = _interopRequireDefault(require("mongoose"));
@@ -16,7 +18,9 @@ if (process.env.NODE_ENV !== "production") {
 
 var server = new _apolloServer.ApolloServer({
   typeDefs: _typeDefs["default"],
-  resolvers: _resolvers["default"]
+  resolvers: _resolvers["default"],
+  introspection: true,
+  playground: true
 });
 
 _mongoose["default"].connect(process.env.MONGO_CONNECTION_STRING, {
