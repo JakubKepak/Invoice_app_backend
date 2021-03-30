@@ -29,6 +29,7 @@ const invoiceSchema = new Schema({
       total: Number,
     },
   ],
+  total: Number,
 });
 
 export default model("Invoice", invoiceSchema);
