@@ -12,6 +12,8 @@ if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
 
+// context will be accessible to all resolvers.
+// So when passing Invoice I can access it or mock it during testing
 const server = new ApolloServer({
   typeDefs,
   resolvers,

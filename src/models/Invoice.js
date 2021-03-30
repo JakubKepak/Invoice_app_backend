@@ -15,6 +15,12 @@ const invoiceSchema = new Schema({
     postCode: String,
     country: String,
   },
+  clientAddress: {
+    street: String,
+    city: String,
+    postCode: String,
+    country: String,
+  },
   items: [
     {
       name: String,
