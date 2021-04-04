@@ -26,6 +26,20 @@ const resolvers = {
       }
     },
   },
+
+  Mutation: {
+    async deleteInvoice(_, { input }, ctx) {
+      try {
+        const deletedInvoice = await ctx.Invoice.findOneAndDelete({
+          id: input.id,
+        });
+        console.log(deletedInvoice);
+        return deletedInvoice;
+      } catch (err) {
+        throw new Error(err);
+      }
+    },
+  },
 };
 
 export default resolvers;

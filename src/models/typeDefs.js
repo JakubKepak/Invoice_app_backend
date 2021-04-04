@@ -84,11 +84,16 @@ const typeDefs = gql`
     total: Float
   }
 
+  input InvoiceID {
+    id: ID!
+  }
+
   type Query {
     getInvoices: [Invoice]
   }
   type Mutation {
     createInvoice(input: NewInvoiceInput): Invoice!
+    deleteInvoice(input: InvoiceID): Invoice!
   }
 `;
 
