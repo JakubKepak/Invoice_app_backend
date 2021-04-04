@@ -25,9 +25,7 @@ const resolvers = {
         throw new Error(err);
       }
     },
-  },
 
-  Mutation: {
     async deleteInvoice(_, { input }, ctx) {
       try {
         const deletedInvoice = await ctx.Invoice.findOneAndDelete({
