@@ -26,6 +26,19 @@ const resolvers = {
       }
     },
 
+    async updateInvoice(_, { input }, ctx) {
+      try {
+        const updatedInvoice = await ctx.Invoice.findOneAndUpdate(
+          { id: input.id },
+          { $set: input },
+          { new: true }
+        );
+        return updatedInvoice;
+      } catch (err) {
+        throw new Error(err);
+      }
+    },
+
     async deleteInvoice(_, { input }, ctx) {
       try {
         const deletedInvoice = await ctx.Invoice.findOneAndDelete({

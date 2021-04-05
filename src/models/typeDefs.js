@@ -93,6 +93,7 @@ const typeDefs = gql`
   }
   type Mutation {
     createInvoice(input: NewInvoiceInput): Invoice!
+    updateInvoice(input: NewInvoiceInput): Invoice!
     deleteInvoice(input: InvoiceID): Invoice!
   }
 `;
