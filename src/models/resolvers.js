@@ -30,7 +30,7 @@ const resolvers = {
       try {
         const updatedInvoice = await ctx.Invoice.findOneAndUpdate(
           { id: input.id },
-          { $set: input },
+          { input },
           { new: true }
         );
         return updatedInvoice;
