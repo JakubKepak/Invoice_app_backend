@@ -90,6 +90,7 @@ const typeDefs = gql`
 
   type Query {
     getInvoices: [Invoice]
+    getInvoice(input: InvoiceID!): Invoice!
   }
   type Mutation {
     createInvoice(input: NewInvoiceInput): Invoice!

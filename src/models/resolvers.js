@@ -13,7 +13,17 @@ const resolvers = {
         throw new Error(err);
       }
     },
+
+    async getInvoice(_, { input }, ctx) {
+      try {
+        const foundInvoice = await ctx.Invoice.findOne({ id: input.id });
+        return foundInvoice;
+      } catch (err) {
+        throw new Error(err);
+      }
+    },
   },
+
   // Basically same as Query type but purpose is to mutate data at the source. In this case MongoDB
   Mutation: {
     async createInvoice(_, { input }, ctx) {
