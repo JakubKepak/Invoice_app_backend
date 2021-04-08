@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`queries get invoices 1`] = `
+Object {
+  "data": Object {
+    "getInvoices": Array [
+      Object {
+        "id": "1",
+      },
+      Object {
+        "id": "2",
+      },
+    ],
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
