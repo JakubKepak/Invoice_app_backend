@@ -15,8 +15,10 @@
   "dependencies": {
     "apollo-server": "^2.22.1",
     "apollo-server-testing": "^2.22.2",
+    "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
     "graphql": "^15.5.0",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.2",
     "regenerator-runtime": "^0.13.7"
   },

@@ -1,3 +1,14 @@
+import jwt from "jsonwebtoken";
+import bcrypt from "bcryptjs";
+import { getToken } from "../helpers/helpers";
+
+import {
+  UserInputError,
+  AuthenticationError,
+  ValidationError,
+} from "apollo-server";
+import User from "./User";
+
 const resolvers = {
   Query: {
     // First argument _ is top level resolver. In this case getInvoices is
@@ -59,6 +70,44 @@ const resolvers = {
       } catch (err) {
         throw new Error(err);
       }
+    },
+
+    async loginUser(_, { input: { username, password } }, ctx) {
+      const user = await ctx.User.findOne({ username });
+      if (!user) throw new AuthenticationError("User does not exist");
+
+      const match = await bcrypt.compare(password, user.password);
+      if (!match) throw new AuthenticationError("incorrect password");
+
+      const token = getToken(user);
+
+      return {
+        id: user._id,
+        ...user._doc,
+        token,
+      };
+    },
+
+    async registerUser(_, { input: { username, password, email } }, ctx) {
+      const user = await ctx.User.findOne({ username });
+      if (user) throw new ValidationError("User is not valid");
+
+      password = await bcrypt.hash(password, 10);
+      const newUser = new ctx.User({
+        username,
+        password,
+        email,
+        created: new Date().toISOString(),
+      });
+
+      const res = await newUser.save();
+      const token = getToken(res);
+
+      return {
+        id: res._id,
+        ...res._doc,
+        token,
+      };
     },
   },
 };

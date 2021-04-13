@@ -7,6 +7,7 @@ import resolvers from "./models/resolvers";
 
 // Schemas
 import Invoice from "./models/Invoice";
+import User from "./models/User";
 
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
@@ -17,8 +18,9 @@ if (process.env.NODE_ENV !== "production") {
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context() {
-    return { Invoice };
+  context: ({ req }) => {
+    const auth = req.headers.authorizaton || "";
+    return { Invoice, User, auth };
   },
   introspection: true,
   playground: true,

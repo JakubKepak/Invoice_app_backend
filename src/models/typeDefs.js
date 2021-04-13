@@ -10,6 +10,14 @@ const typeDefs = gql`
 
   # Types
 
+  type User {
+    id: ID!
+    username: String!
+    email: String!
+    created: String!
+    token: String!
+  }
+
   type senderAddress {
     street: String
     city: String
@@ -47,6 +55,17 @@ const typeDefs = gql`
   }
 
   # input types
+
+  input RegisterUserInput {
+    username: String!
+    password: String!
+    email: String!
+  }
+
+  input LoginInput {
+    username: String!
+    password: String!
+  }
 
   input NewSenderAddressInput {
     street: String
@@ -96,6 +115,8 @@ const typeDefs = gql`
     createInvoice(input: NewInvoiceInput): Invoice!
     updateInvoice(input: NewInvoiceInput): Invoice!
     deleteInvoice(input: InvoiceID): Invoice!
+    loginUser(input: LoginInput): User!
+    registerUser(input: RegisterUserInput): User!
   }
 `;
 
