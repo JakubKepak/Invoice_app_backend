@@ -14,7 +14,6 @@ const typeDefs = gql`
     id: ID!
     username: String!
     email: String!
-    created: String!
     token: String!
   }
 

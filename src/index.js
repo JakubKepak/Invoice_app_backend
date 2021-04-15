@@ -20,6 +20,7 @@ const server = new ApolloServer({
   resolvers,
   context: ({ req }) => {
     const auth = req.headers.authorizaton || "";
+    console.log(auth);
     return { Invoice, User, auth };
   },
   introspection: true,
