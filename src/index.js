@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 
 import typeDefs from "./models/typeDefs";
 import resolvers from "./models/resolvers";
+import { getUserFromToken } from "./auth";
 
 // Schemas
 import Invoice from "./models/Invoice";
@@ -19,9 +20,9 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   context: ({ req }) => {
-    const auth = req.headers.authorizaton || "";
-    console.log(auth);
-    return { Invoice, User, auth };
+    const token = req.headers.authorization || "";
+    const authUser = getUserFromToken(token);
+    return { Invoice, User, authUser };
   },
   introspection: true,
   playground: true,

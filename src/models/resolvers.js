@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import { getToken } from "../helpers/helpers";
+import { authenticated } from "../auth";
 
 import {
   UserInputError,
@@ -16,14 +17,14 @@ const resolvers = {
     // Second argument __ is arguments. This allows clients send up arguments to
     // queries or mutation like pagination etc.
     // Thisrd argument is context. Here I access Invoices model from mongoose
-    async getInvoices(_, __, ctx) {
+    getInvoices: authenticated(async (_, __, ctx) => {
       try {
         const invoices = await ctx.Invoice.find();
         return invoices;
       } catch (err) {
         throw new Error(err);
       }
-    },
+    }),
 
     async getInvoice(_, { input }, ctx) {
       try {
