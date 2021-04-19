@@ -19,7 +19,7 @@ const resolvers = {
     // Thisrd argument is context. Here I access Invoices model from mongoose
     getInvoices: authenticated(async (_, __, ctx) => {
       try {
-        const invoices = await ctx.Invoice.find();
+        const invoices = await ctx.Invoice.find({ userId: ctx.authUser._id });
         return invoices;
       } catch (err) {
         throw new Error(err);
@@ -38,15 +38,18 @@ const resolvers = {
 
   // Basically same as Query type but purpose is to mutate data at the source. In this case MongoDB
   Mutation: {
-    async createInvoice(_, { input }, ctx) {
+    createInvoice: authenticated(async (_, { input }, ctx) => {
       try {
-        const newInvoice = new ctx.Invoice(input);
+        const newInvoice = new ctx.Invoice({
+          ...input,
+          userId: ctx.authUser._id,
+        });
         const res = await newInvoice.save();
         return newInvoice;
       } catch (err) {
         throw new Error(err);
       }
-    },
+    }),
 
     async updateInvoice(_, { input }, ctx) {
       try {

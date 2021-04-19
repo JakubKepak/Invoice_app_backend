@@ -30,6 +30,7 @@ const invoiceSchema = new Schema({
     },
   ],
   total: Number,
+  userId: String,
 });
 
 export default model("Invoice", invoiceSchema);

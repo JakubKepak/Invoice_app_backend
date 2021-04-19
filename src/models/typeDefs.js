@@ -15,6 +15,7 @@ const typeDefs = gql`
     username: String!
     email: String!
     token: String!
+    invoices: [Invoice]
   }
 
   type senderAddress {
@@ -51,6 +52,8 @@ const typeDefs = gql`
     clientAddress: clientAddress
     items: [items]
     total: Float
+    user: [User]
+    userId: String
   }
 
   # input types
@@ -100,6 +103,7 @@ const typeDefs = gql`
     clientAddress: NewClientAddressInput
     items: [NewItemsInput]
     total: Float
+    userId: String
   }
 
   input InvoiceID {
