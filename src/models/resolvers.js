@@ -26,14 +26,14 @@ const resolvers = {
       }
     }),
 
-    async getInvoice(_, { input }, ctx) {
+    getInvoice: authenticated(async (_, { input }, ctx) => {
       try {
         const foundInvoice = await ctx.Invoice.findOne({ id: input.id });
         return foundInvoice;
       } catch (err) {
         throw new Error(err);
       }
-    },
+    }),
   },
 
   // Basically same as Query type but purpose is to mutate data at the source. In this case MongoDB
@@ -51,7 +51,7 @@ const resolvers = {
       }
     }),
 
-    async updateInvoice(_, { input }, ctx) {
+    updateInvoice: authenticated(async (_, { input }, ctx) => {
       try {
         const updatedInvoice = await ctx.Invoice.findOneAndUpdate(
           { id: input.id },
@@ -62,9 +62,9 @@ const resolvers = {
       } catch (err) {
         throw new Error(err);
       }
-    },
+    }),
 
-    async deleteInvoice(_, { input }, ctx) {
+    deleteInvoice: authenticated(async (_, { input }, ctx) => {
       try {
         const deletedInvoice = await ctx.Invoice.findOneAndDelete({
           id: input.id,
@@ -74,7 +74,7 @@ const resolvers = {
       } catch (err) {
         throw new Error(err);
       }
-    },
+    }),
 
     async loginUser(_, { input: { username, password } }, ctx) {
       const user = await ctx.User.findOne({ username });
