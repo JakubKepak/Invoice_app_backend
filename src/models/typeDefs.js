@@ -61,7 +61,7 @@ const typeDefs = gql`
   input RegisterUserInput {
     username: String!
     password: String!
-    email: String!
+    email: String
   }
 
   input LoginInput {
