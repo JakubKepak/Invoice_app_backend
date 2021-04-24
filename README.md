@@ -7,7 +7,7 @@ This is a backend for [Simple Invoicing App](https://github.com/JakubKepak/Invoi
 The backend is deployed on [Heroku](https://www.heroku.com/) in a free tier. So it might take some time when the app is first load up.
 
 ### About
-The backend is build as GraphQL API using [Apollo](https://www.apollographql.com/). It intetionally contains quite a lot of comments.
+The backend is build as GraphQL API using [Apollo](https://www.apollographql.com/). MongoDB Atlas is used as a database. It intetionally contains quite a lot of comments.
 
 ### Runing the backend locally
 - Clone or copy the repo
